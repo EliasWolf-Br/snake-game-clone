@@ -104,23 +104,23 @@ class Game {
 
 	draw() {
 		// draw game
-		background(255);
+		this.canvas.background(255);
 
 		noStroke();
 
 		// cool effect
-		var border = 4; fill(0); rect((this.food.x * this.size) - border, (this.food.y * this.size) - border, this.size + (border * 2), this.size + (border * 2)); for(var a = 0; a < this.snake.body.length; a++) rect((this.snake.body[a].x * this.size) - border, (this.snake.body[a].y * this.size) - border, this.size + (border * 2), this.size + (border * 2));
+		var border = 4; this.canvas.fill(0); this.canvas.rect([(this.food.x * this.size) - border, (this.food.y * this.size) - border, this.size + (border * 2), this.size + (border * 2)]); for(var a = 0; a < this.snake.body.length; a++) this.canvas.rect([(this.snake.body[a].x * this.size) - border, (this.snake.body[a].y * this.size) - border, this.size + (border * 2), this.size + (border * 2)]);
 
 		// draw food
-		fill(255, 255, 0);
-		rect(this.food.x * this.size, this.food.y * this.size, this.size, this.size);
+		this.canvas.fill(255, 255, 0);
+		this.canvas.rect([this.food.x * this.size, this.food.y * this.size, this.size, this.size]);
 		
 		// draw snake
 		for(var a = 0; a < this.snake.body.length; a++) {
 			// gradient effect
 			var gradient = (a / (this.snake.body.length - 1)) * 255 || 0;
-			fill(gradient, 0, 255 - gradient);
-			rect(this.snake.body[a].x * this.size, this.snake.body[a].y * this.size, this.size, this.size);
+			this.canvas.fill(gradient, 0, 255 - gradient);
+			this.canvas.rect([this.snake.body[a].x * this.size, this.snake.body[a].y * this.size, this.size, this.size]);
 		};
 	}
 }
